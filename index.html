@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Library</title>
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/css-reset.css">
+    <link rel="stylesheet" href="./css/modern-normalize.css">
 </head>
 <body>
     <div>
-        <h1>Library</h1>
-        <div class="library-container">
-
+        <div class="library-header">
+            <h1>Library</h1>
+            <button class="display-modal">New Book</button>
         </div>
+        <div class="library-container"></div>
     </div>
     <dialog>
         <button class="close-modal">Close</button>
@@ -26,19 +29,18 @@
             </div>
             <div class="form-control">
                 <label for="number-of-page">Number of Page</label>
-                <input type="number" id="number-of-page" name="number-of-page">
+                <input type="number" id="number-of-page" name="numberOfPage">
             </div>
             <div class="form-control">
                 <span >Have you already read it?</span>
                 <label for="read-status-yes">yes</label>
-                <input type="radio" id="read-status-yes" name="read-status" value="read" >
+                <input type="radio" id="read-status-yes" name="readStatus" value="Already read" >
                 <label for="read-status-no">no</label>
-                <input type="radio" id="read-status-no" name="read-status" value="not read" checked>
+                <input type="radio" id="read-status-no" name="readStatus" value="Not yet" checked>
             </div>
             <button class="button" type=submit>Submit</button>
         </form>
     </dialog>
-    <button class="display-modal">Show Modal</button>
     <script defer src="./js/index.js"></script>
 </body>
 </html>
