@@ -1,0 +1,71 @@
+body *{
+    font-family:'Times New Roman', Times, serif;
+}
+div >.library-container{
+    --custom-color:#1d4ed8;
+    display:grid;
+    grid-template-columns: repeat(auto-fill,400px);
+    grid-auto-rows: auto;
+    gap:1rem 1rem;
+    margin:4rem;
+}
+div > .library-header{
+    margin:4rem;
+    display:flex;
+    justify-content: space-between;
+}
+div > h1 {
+    font-size:48px;
+}
+.library-container > .book-entry{
+    background-color:var(--custom-color);
+    color:whitesmoke;
+    border-radius: 0.5rem;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border:0.1rem solid white;
+}
+.book-entry > .book-container{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    margin:1rem;
+}
+.book-entry > .book-info-container{
+    display:flex;
+    flex-direction: column;
+    justify-self: stretch;
+    align-content:flex-start;
+    margin:1rem;
+    gap:10px 10px;
+    width:15rem;
+}
+.book-entry *:not(.title) {
+    font-size:14px;
+}
+.book-entry > .book-info-container > p:nth-child(1){
+    padding-top:1rem;
+}
+.book-entry > .book-info-container > p:nth-child(3){
+    padding-bottom:1rem;
+}
+.book-entry > .book-container > p{
+    font-size:20px;
+    white-space:wrap;
+    font-weight: bold;
+    text-align: center;
+}
+.book-entry > button{
+    background-color:transparent;
+    border:none;
+    color:white;
+    align-self: flex-end;
+    margin: 10px 10px 0 0;
+
+}
+form > span > input[name="readingStatus"]{
+    visibility:hidden;
+}
