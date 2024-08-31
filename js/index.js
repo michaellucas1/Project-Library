@@ -22,10 +22,11 @@ function removeAllBooks(){
 function retrieveData(){
     console.log(localStorage.length)
     if(!(localStorage.length===0)){
-        for(let i=0;i<localStorage.length;i++){
+        for(let i=0;i<localStorage.length-1;i++){
             const storedItem = localStorage.getItem(`mySavedLibrary${i}`);
             AddToLibrary(JSON.parse(storedItem));
         }
+        bookCounter=JSON.parse(localStorage.getItem("savedBookCounter"));
         localStorage.clear();
     }
     else{
@@ -83,6 +84,7 @@ class Book {
     }
 }
 function AddToLibrary(newBook){
+    console.log(bookCounter);
     myLibrary.push(newBook);
     libraryContainer.appendChild(generateElements(myLibrary[myLibrary.length-1]));
 }
@@ -180,6 +182,7 @@ window.addEventListener("beforeunload",(event)=>{
     for(let i=0;i<myLibrary.length;i++){
         localStorage.setItem(`mySavedLibrary${i}`,JSON.stringify(myLibrary[i]))
     }
+    localStorage.setItem("savedBookCounter", JSON.stringify(bookCounter));
     
 });
 
