@@ -5,9 +5,34 @@ const dialog =document.querySelector("dialog");
 const closeModal=document.querySelector(".close-modal");
 const form=document.querySelector('.book-form');
 const libraryContainer = document.querySelector(".library-container");
+const resetStorage=document.querySelector(".reset-library");
 let bookCounter=0;
 
+resetStorage.addEventListener("click",()=>{
+    localStorage.clear();
+    removeAllBooks();
+    bookExamples();   
+});
+function removeAllBooks(){
+    while (libraryContainer.firstChild) {
+        myLibrary.pop();
+        libraryContainer.removeChild(libraryContainer.firstChild);
+    }
+}
+function retrieveData(){
+    console.log(localStorage.length)
+    if(!(localStorage.length===0)){
+        for(let i=0;i<localStorage.length;i++){
+            const storedItem = localStorage.getItem(`mySavedLibrary${i}`);
+            AddToLibrary(JSON.parse(storedItem));
+        }
+        localStorage.clear();
+    }
+    else{
+         bookExamples();                                      
 
+    }
+}
 function librarySearch(bookID){
     for(let i=0;i<myLibrary.length;i++){
         if(bookID===myLibrary[i].ID){
@@ -148,4 +173,14 @@ openModal.addEventListener("click",()=>{
 closeModal.addEventListener("click", ()=>{
     dialog.close();
 });
-bookExamples();
+
+
+window.addEventListener("beforeunload",(event)=>{
+    event.preventDefault();
+    for(let i=0;i<myLibrary.length;i++){
+        localStorage.setItem(`mySavedLibrary${i}`,JSON.stringify(myLibrary[i]))
+    }
+    
+});
+
+retrieveData();
