@@ -84,7 +84,6 @@ class Book {
     }
 }
 function AddToLibrary(newBook){
-    console.log(bookCounter);
     myLibrary.push(newBook);
     libraryContainer.appendChild(generateElements(myLibrary[myLibrary.length-1]));
 }
