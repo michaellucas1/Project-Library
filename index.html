@@ -9,38 +9,46 @@
     <link rel="stylesheet" href="./css/modern-normalize.css">
 </head>
 <body>
-    <div class="container">
-        <div class="library-header">
-            <h1>Library</h1>
-            <button class="display-modal">New Book</button>
+    <div class="background-color-container"> 
+        <div class="grid-container">
+            <div class="library-header">
+                <h1>Library</h1>
+                <button type="button" class="display-modal">New Book</button>
+                <button type="button" class="reset-library">Reset</button>
+            </div>
+            <div class="library-container"></div>
+            <dialog class="dialog">
+                <div class="modal-container">
+                    <button type="button" class="close-modal">&#10006;</button>
+                    <form class="book-form">
+                        <div class="form-control-container">
+                            <div class="form-control">
+                                <label for="title">Book's Title:</label>
+                                <input type="text" id="title" name="title">
+                            </div>
+                            <div class="form-control">
+                                <label for="author">Author's Name:</label>
+                                <input type="text" id="author" name="author">
+                            </div>
+
+                            <div class="form-control">
+                                <label for="number-of-page">Number of Page:</label>
+                                <input type="number" id="number-of-page" name="numberOfPage">
+                            </div>
+                            <div class="form-control">
+                                <p >Have you already read it?</p>
+                                <label for="read-status-yes">Yes</label>
+                                <input type="radio" id="read-status-yes" name="readStatus" value="Already read" >
+                                <label for="read-status-no">No</label>
+                                <input type="radio" id="read-status-no" name="readStatus" value="Not yet" checked>
+                            </div>
+                        </div>
+                        <button class="submit-button" type=submit>Submit</button>
+                    </form>
+                </div>
+            </dialog>
         </div>
-        <div class="library-container"></div>
     </div>
-    <dialog>
-        <button class="close-modal">Close</button>
-        <form class="book-form">
-            <div class="form-control">
-                <label for="author">Author's Name</label>
-                <input type="text" id="author" name="author">
-            </div>
-            <div class="form-control">
-                <label for="title">Book's Title</label>
-                <input type="text" id="title" name="title">
-            </div>
-            <div class="form-control">
-                <label for="number-of-page">Number of Page</label>
-                <input type="number" id="number-of-page" name="numberOfPage">
-            </div>
-            <div class="form-control">
-                <span >Have you already read it?</span>
-                <label for="read-status-yes">yes</label>
-                <input type="radio" id="read-status-yes" name="readStatus" value="Already read" >
-                <label for="read-status-no">no</label>
-                <input type="radio" id="read-status-no" name="readStatus" value="Not yet" checked>
-            </div>
-            <button class="button" type=submit>Submit</button>
-        </form>
-    </dialog>
     <script defer src="./js/index.js"></script>
 </body>
 </html>
