@@ -71,12 +71,10 @@ function generateElements(currentBook){
     const numberOfPage = document.createElement("p");
     const readStatus = document.createElement("p");
     const removeButton = document.createElement("button");
-    const radioButtonYes = document.createElement("input");
-    const radioButtonNo = document.createElement("input");
-    const labelYes =document.createElement("label");
-    const labelNo =document.createElement("label");
-    const radioContainer=document.createElement("span");
-    const radioForm = document.createElement("form");
+    const buttonRead=document.createElement("button");
+    const buttonNotRead=document.createElement("button");
+    const readButtonSpan=document.createElement("span");
+
     bookContainer.className="book-container";
     bookInfoContainer.className="book-info-container";
     bookEntry.className="book-entry";
@@ -84,50 +82,52 @@ function generateElements(currentBook){
     author.className="author-name";
     numberOfPage.className="total-pages";
     readStatus.className="status";
-    radioButtonYes.setAttribute("type","radio");
-    radioButtonYes.setAttribute("id",`yes${currentBook.ID}`);
-    radioButtonYes.setAttribute("name","readingStatus");
-    radioButtonYes.setAttribute("value","yes");
-    labelYes.setAttribute("for",`yes${currentBook.ID}`);
-    radioButtonNo.setAttribute("type","radio");
-    radioButtonNo.setAttribute("id",`no${currentBook.ID}`)
-    radioButtonNo.setAttribute("name","readingStatus");
-    radioButtonNo.setAttribute("value","no");
-    labelNo.setAttribute("for",`no${currentBook.ID}`);
-    
+    removeButton.setAttribute("type","button");
+    buttonRead.setAttribute("type","button");
+    buttonNotRead.setAttribute("type","button");
     title.textContent=`${currentBook["title"]}`;
     author.textContent=`By: ${currentBook["author"]}`;
     numberOfPage.textContent=`Pages: ${currentBook["numberOfPage"]}`;
     removeButton.innerHTML=`&#10006;`;
     readStatus.textContent=`Reading: ${currentBook["readStatus"]}`;
-    labelYes.textContent=` Yes `;
-    labelNo.textContent=` No `;
+    buttonRead.textContent=` Read `;
+    buttonNotRead.textContent=` Not Read `;
     removeButton.addEventListener("click",()=>{
         availableId.push(currentBook.ID);
         libraryContainer.removeChild(bookEntry);
         myLibrary.splice(librarySearch(currentBook.ID),1);
     });
-    radioButtonYes.addEventListener("change",(event)=>{
+    buttonRead.addEventListener("click",(event)=>{
         myLibrary[librarySearch(currentBook.ID)].readStatus="Already read";
         bookInfoContainer.children[2].textContent=`Reading: ${currentBook["readStatus"]}`;
+        buttonRead.hidden=true;
+        buttonNotRead.hidden=false;
     });
-    radioButtonNo.addEventListener("change",(event)=>{
+    buttonNotRead.addEventListener("click",(event)=>{
         myLibrary[librarySearch(currentBook.ID)].readStatus="Not yet";
         bookInfoContainer.children[2].textContent=`Reading: ${currentBook["readStatus"]}`;
+        buttonNotRead.hidden=true;
+        buttonRead.hidden=false;
+
     });
     bookContainer.appendChild(title);
     bookInfoContainer.appendChild(author);
     bookInfoContainer.appendChild(numberOfPage);
     bookInfoContainer.appendChild(readStatus);
-    radioContainer.appendChild(radioButtonYes);
-    radioContainer.appendChild(labelYes);
-    radioContainer.appendChild(radioButtonNo);
-    radioContainer.appendChild(labelNo);
-    radioForm.appendChild(radioContainer);
+    readButtonSpan.appendChild(buttonRead);
+    readButtonSpan.appendChild(buttonNotRead);
+    if(currentBook["readStatus"]==="Already read"){
+        buttonRead.hidden=true;
+        buttonNotRead.hidden=false;
+    }
+    else{
+        buttonNotRead.hidden=true;
+        buttonRead.hidden=false;
+    } 
     bookEntry.appendChild(removeButton);
     bookEntry.appendChild(bookContainer);
     bookEntry.appendChild(bookInfoContainer);
-    bookEntry.appendChild(radioForm);
+    bookEntry.appendChild(readButtonSpan);
     return bookEntry;
 }
 
