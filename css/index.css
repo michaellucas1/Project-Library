@@ -23,7 +23,7 @@ div >.library-container{
     grid-area: body; 
     display:grid;
     grid-template-columns: repeat(auto-fit,280px);
-    grid-auto-rows: auto;
+    grid-auto-rows: 1fr;
     gap:1rem 1rem;
     margin:4rem;
 }
@@ -51,7 +51,7 @@ dialog > .modal-container{
     color:whitesmoke;
     display:flex;
     flex-direction: column;
-    align-items:center;
+    align-items:start;
     justify-content: space-between;
     flex-wrap: wrap;
     border:none;
@@ -80,7 +80,11 @@ form > .form-control-container{
     border-radius: 5px;
 }
 .book-entry *:not(.title):not(button) {
+    inline-size:250px;
+    overflow:hidden;
+    overflow-wrap:break-word;
     font-size:16px;
+    margin-right:1rem;
 }
 .book-entry > .book-info-container > p:nth-child(1){
     padding-top:1rem;
@@ -136,7 +140,7 @@ form > button{
 div > button,
 dialog > .close-modal,
 form > .submit-button{
-    box-shadow: -2px 2px 5px 2px rgb(0,0,0,0.4);
+    box-shadow: -2px 2px 6px 2px rgb(0,0,0,0.4);
 }
 .library-header > h1 {
     margin-right:50px;
@@ -189,4 +193,8 @@ div > form {
     flex-direction:column;
     justify-content: center;
     align-items:center;
+}
+
+.book-entry > span>button{
+    margin-left:7rem;
 }
