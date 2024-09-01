@@ -177,7 +177,7 @@ closeModal.addEventListener("click", ()=>{
 
 
 window.addEventListener("beforeunload",(event)=>{
-    event.preventDefault();
+    event.preventDefault;
     for(let i=0;i<myLibrary.length;i++){
         localStorage.setItem(`mySavedLibrary${i}`,JSON.stringify(myLibrary[i]))
     }
